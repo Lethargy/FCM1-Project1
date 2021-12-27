@@ -30,7 +30,7 @@ This
 is well conditioned because
 
 <p align="center">
-  <img src="https://latex.codecogs.com/svg.image?\bg_white&space;\inline&space;\begin{align*}\left|&space;\frac{x({\bf{d}}&space;&plus;&space;\Delta{\bf{d}})-x({\bf{d}})}{x({\bf{d}})}\right|&=&space;\left|&space;\frac{\sum_i&space;(d_i&plus;\Delta&space;d_i)-\sum_i(d_i)}{\sum_i(d_i)}\right|=&space;\left|&space;\frac{\sum_i&space;\Delta&space;d_i}{\sum_i&space;d_i}&space;\right|&space;\\&\leq&space;\frac{\sum_i&space;\left|&space;\Delta&space;d_i\right|}{\left|&space;\sum_i&space;d_i\right|}&space;=&space;\frac{\sum_i&space;\left|&space;d_i\right|}{\left|&space;\sum_i&space;d_i\right|}\frac{\sum_i&space;\left|&space;\Delta&space;d_i\right|}{\sum_i&space;\left|&space;d_i\right|}&space;=&space;\kappa_r&space;\frac{\left\|&space;\Delta{\bf{d}}\right\|_1}{\left\|&space;{\bf{d}}\right\|_1}\end{align*}" title="\bg_white \inline \begin{align*}\left| \frac{x({\bf{d}} + \Delta{\bf{d}})-x({\bf{d}})}{x({\bf{d}})}\right|&= \left| \frac{\sum_i (d_i+\Delta d_i)-\sum_i(d_i)}{\sum_i(d_i)}\right|= \left| \frac{\sum_i \Delta d_i}{\sum_i d_i} \right| \\&\leq \frac{\sum_i \left| \Delta d_i\right|}{\left| \sum_i d_i\right|} = \frac{\sum_i \left| d_i\right|}{\left| \sum_i d_i\right|}\frac{\sum_i \left| \Delta d_i\right|}{\sum_i \left| d_i\right|} = \kappa_r \frac{\left\| \Delta{\bf{d}}\right\|_1}{\left\| {\bf{d}}\right\|_1}\end{align*}" />.
+  <img src="https://latex.codecogs.com/svg.image?\bg_white&space;\begin{align*}\left|&space;\frac{x({\bf{d}}&space;&plus;&space;\Delta{\bf{d}})-x({\bf{d}})}{x({\bf{d}})}\right|&=&space;\left|&space;\frac{\sum_i&space;(d_i&plus;\Delta&space;d_i)-\sum_i(d_i)}{\sum_i(d_i)}\right|=&space;\left|&space;\frac{\sum_i&space;\Delta&space;d_i}{\sum_i&space;d_i}&space;\right|&space;\\&\leq&space;\frac{\sum_i&space;\left|&space;\Delta&space;d_i\right|}{\left|&space;\sum_i&space;d_i\right|}&space;=&space;\frac{\sum_i&space;\left|&space;d_i\right|}{\left|&space;\sum_i&space;d_i\right|}\frac{\sum_i&space;\left|&space;\Delta&space;d_i\right|}{\sum_i&space;\left|&space;d_i\right|}&space;=&space;\kappa_r&space;\frac{\left\|&space;\Delta{\bf{d}}\right\|_1}{\left\|&space;{\bf{d}}\right\|_1}\end{align*}" title="\bg_white \inline \begin{align*}\left| \frac{x({\bf{d}} + \Delta{\bf{d}})-x({\bf{d}})}{x({\bf{d}})}\right|&= \left| \frac{\sum_i (d_i+\Delta d_i)-\sum_i(d_i)}{\sum_i(d_i)}\right|= \left| \frac{\sum_i \Delta d_i}{\sum_i d_i} \right| \\&\leq \frac{\sum_i \left| \Delta d_i\right|}{\left| \sum_i d_i\right|} = \frac{\sum_i \left| d_i\right|}{\left| \sum_i d_i\right|}\frac{\sum_i \left| \Delta d_i\right|}{\sum_i \left| d_i\right|} = \kappa_r \frac{\left\| \Delta{\bf{d}}\right\|_1}{\left\| {\bf{d}}\right\|_1}\end{align*}" />.
 </p>
 
 One may bound the absolute error
@@ -57,8 +57,77 @@ is an approximation of
 then two quantities of interest are 
 <img src="https://latex.codecogs.com/svg.image?\bg_white&space;\inline&space;\left|&space;\hat{x}&space;-&space;x\right|" title="\bg_white \inline \left| \hat{x} - x\right|" />
 and
-<img src="https://latex.codecogs.com/svg.image?\bg_white&space;\inline&space;\left|&space;({\hat{x}&space;-&space;x})/{x}\right|" title="\bg_white \inline \left| ({\hat{x} - x})/{x}\right|" />.
+<img src="https://latex.codecogs.com/svg.image?\bg_white&space;\inline&space;\left|&space;\hat{x}&space;-&space;x\right|/\left|&space;x\right|" title="\bg_white \inline \left| \hat{x} - x\right|/\left| x\right|" />.
+We call the former _absolute forward error_ and the latter _relative forward error_. We derive upper bounds for each.
  
+ In fact, we show that all three algorithms are backwards stable. That is, the errors are no greater than
+ 
+ <p align="center">
+ <img src="https://latex.codecogs.com/svg.image?\bg_white&space;\left|&space;\hat{x}&space;-&space;x\right|&space;\leq&space;\kappa_a&space;p(n)u&space;\qquad&space;\text{and}&space;\qquad&space;\left|&space;\frac{\hat{x}-x}{x}\right|&space;\leq&space;\kappa_r&space;p(n)u," title="\bg_white \inline \left| \hat{x} - x\right| \leq \kappa_a p(n)u \qquad \text{and} \qquad \left| \frac{\hat{x}-x}{x}\right| \leq \kappa_r p(n)u," />
+  </p>
+ 
+for some <img src="https://latex.codecogs.com/svg.image?\bg_white&space;\inline&space;p(n)" title="\bg_white \inline p(n)" />, and for each approximate solution <img src="https://latex.codecogs.com/svg.image?\bg_white&space;\inline&space;\hat{x}" title="\bg_white \inline \hat{x}" />, there exists a vector <img src="https://latex.codecogs.com/svg.image?\bg_white&space;\inline&space;\Delta{\bf{d}}" title="\bg_white \inline \Delta{\bf{d}}" /> (small relative to <img src="https://latex.codecogs.com/svg.image?\bg_white&space;\inline&space;\bf{d}" title="\bg_white \inline \bf{d}" />) that satisfies <img src="https://latex.codecogs.com/svg.image?\bg_white&space;\inline&space;F(\hat{x},{\bf{d}}&plus;\Delta{\bf{d}})&space;=&space;0" title="\bg_white \inline F(\hat{x},{\bf{d}}+\Delta{\bf{d}}) = 0" />. Here, <img src="https://latex.codecogs.com/svg.image?\bg_white&space;\inline&space;u&space;=&space;2^{-24}" title="\bg_white \inline u = 2^{-24}" /> denotes _unit round off_.
+
+## Algorithm 1
+It has been shown [[2]](#2) that if
+<img src="https://latex.codecogs.com/svg.image?\bg_white&space;\inline&space;\xi&space;=&space;(\xi_1,\dots,\xi_n)^T" title="\bg_white \inline \xi = (\xi_1,\dots,\xi_n)^T" />
+is a vector of floating point numbers, then the errors have the approximate bounds
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.image?\bg_white&space;\begin{align*}\left|&space;\hat{x}_1(\xi)&space;-&space;x(\xi)\right|&space;&\leq&space;\kappa_a&space;n&space;u&space;\\\left|&space;\frac{\hat{x}_1(\xi)&space;-&space;x(\xi)}{x(\xi)}\right|&space;&\leq&space;\kappa_r&space;nu.\end{align*}&space;" title="\bg_white \begin{align*}\left| \hat{x}_1(\xi) - x(\xi)\right| &\leq \kappa_a n u \\\left| \frac{\hat{x}_1(\xi) - x(\xi)}{x(\xi)}\right| &\leq \kappa_r nu\end{align*} " />
+</p>
+
+If instead we require the data
+<img src="https://latex.codecogs.com/svg.image?\bg_white&space;\inline&space;{\bf{d}}&space;=&space;(d_1,\dots,d_n)^T" title="\bg_white \inline {\bf{d}} = (d_1,\dots,d_n)^T" />
+to be real valued, then this does not change the bounds (provided that they are within range, i.e. not too large). Indeed for each
+<img src="https://latex.codecogs.com/svg.image?\bg_white&space;\inline&space;d&space;\in&space;\mathbb{R}" title="\bg_white \inline d \in \mathbb{R}" />
+(within range), there exists
+<img src="https://latex.codecogs.com/svg.image?\bg_white&space;\inline&space;\xi&space;\in&space;\mathcal{F}(\beta,t,L,U)" title="\bg_white \inline \xi \in \mathcal{F}(\beta,t,L,U)" />
+and
+<img src="https://latex.codecogs.com/svg.image?\bg_white&space;\inline&space;\delta&space;\in&space;(-u,u)" title="\bg_white \inline \delta \in (-u,u)" />
+for which
+<img src="https://latex.codecogs.com/svg.image?\bg_white&space;\inline&space;d&space;=&space;\xi(1&plus;\delta)." title="\bg_white \inline d = \xi(1+\delta)." />.
+Thus substitution of
+<img src="https://latex.codecogs.com/svg.image?\bg_white&space;\inline&space;\bf{d}" title="\bg_white \inline \bf{d}" />
+into
+<img src="https://latex.codecogs.com/svg.image?\bg_white&space;\inline&space;\xi" title="\bg_white \inline \xi" />
+does not change the order of
+<img src="https://latex.codecogs.com/svg.image?\bg_white&space;\inline&space;p(n)\in\mathcal{O}(n)." title="\bg_white \inline p(n)\in\mathcal{O}(n)." />
+
+To show that
+<img src="https://latex.codecogs.com/svg.image?\bg_white&space;\inline&space;\hat{x}_1({\bf{d}})" title="\bg_white \inline \hat{x}_1({\bf{d}})" />
+is backwards stable, recall [[4]](#4) that we may express
+<img src="https://latex.codecogs.com/svg.image?\bg_white&space;\inline&space;\hat{x}_1({\bf{d}})" title="\bg_white \inline \hat{x}_1({\bf{d}})" />
+in the form
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.image?\bg_white&space;\hat{x}_1({\bf{d}})&space;=&space;\sum_{i=1}^n&space;d_i&space;(1&plus;\eta_i)," title="\bg_white \hat{x}_1({\bf{d}}) = \sum_{i=1}^n d_i (1+\eta_i)" />
+</p>
+
+where
+<img src="https://latex.codecogs.com/svg.image?\bg_white&space;\inline&space;\left|&space;\eta_i\right|&space;\leq&space;nu" title="\bg_white \inline \left| \eta_i\right| \leq nu" />.
+Hence,
+<img src="https://latex.codecogs.com/svg.image?\bg_white&space;\inline&space;\hat{x}_1({\bf{d}})" title="\bg_white \inline \hat{x}_1({\bf{d}})" />
+actually solves the problem with data
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.image?\bg_white&space;{\bf{d}}&space;&plus;&space;\Delta{\bf{d}}&space;=&space;\left(d_1(1&plus;\eta_1),\dots,d_n(1&plus;\eta_n)&space;\right)^T." title="\bg_white {\bf{d}} + \Delta{\bf{d}} = \left(d_1(1+\eta_1),\dots,d_n(1+\eta_n) \right)^T." />
+</p>
+
+Our backward error (using the
+<img src="https://latex.codecogs.com/svg.image?\bg_white&space;\inline&space;L_1" title="\bg_white \inline L_1" />
+norm) is
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.image?\bg_white&space;\left\|&space;\Delta{\bf{d}}\right\|_1&space;=&space;\left\|&space;\left&space;(&space;d_1\eta_1,\dots,d_n\eta_n&space;\right&space;)^T\right\|_1&space;=&space;\sum_{i=1}^{n}\left|d_i\eta_i&space;\right|&space;\leq&space;\left\|{\bf{d}}&space;\right\|_1&space;\left\|&space;\eta&space;\right\|_1" title="\bg_white \left\| \Delta{\bf{d}}\right\|_1 = \left\| \left ( d_1\eta_1,\dots,d_n\eta_n \right )^T\right\|_1 = \sum_{i=1}^{n}\left|d_i\eta_i \right| \leq \left\|{\bf{d}} \right\|_1 \left\| \eta \right\|_1" />
+  </p>
+  
+which is small relative to
+<img src="https://latex.codecogs.com/svg.image?\bg_white&space;\inline&space;\left\|{\bf{d}}&space;\right\|_1" title="\bg_white \inline \left\|{\bf{d}} \right\|_1" />
+because each
+<img src="https://latex.codecogs.com/svg.image?\bg_white&space;\inline&space;\eta_i" title="\bg_white \inline \eta_i" />
+is small.
+
 # References
 <a id="1">[1]</a>
 Gallivan, K. A. _Set 2: Representation, Conditioning and Error_, Lecture Notes. Foundations of Computational Math I, Florida State University.
