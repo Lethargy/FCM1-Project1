@@ -172,7 +172,7 @@ times smaller than that of single precision
 <img src="https://latex.codecogs.com/svg.image?\inline&space;u_{sp}&space;=&space;2^{-24}" title="\inline u_{sp} = 2^{-24}" />
 . We therefore neglect the accumulation of rounding error due to double precision addition. This may be problematic when
 <img src="https://latex.codecogs.com/svg.image?\inline&space;n&space;\gg&space;2^{29}" title="\inline n \gg 2^{29}" />
-, but we do not consider such sums here here. The algorithm in question is
+, but we do not consider such sums here. The algorithm in question is
 
 <p align="center">
 <img src="https://latex.codecogs.com/svg.image?\begin{align*}\sigma_{1:n}&space;&=&space;\mathrm{fl}\!\left(&space;\mathrm{fl}(d_1)&space;&plus;&space;\mathrm{fl}(d_2)&space;&plus;&space;\cdots&space;&plus;&space;\mathrm{fl}(d_n)&space;\right)&space;\\&=&space;\mathrm{fl}\!\left(d_1(1&plus;\delta_1)&space;&plus;&space;d_2(1&plus;\delta_2)&space;&plus;&space;\cdots&space;&plus;&space;d_n(1&plus;\delta_n)&space;\right)&space;\\&=&space;\left(&space;d_1(1&plus;\delta_1)&space;&plus;&space;d_2(1&plus;\delta_2)&space;&plus;&space;\cdots&space;&plus;&space;d_n(1&plus;\delta_n)&space;\right)(1&plus;\delta_{n&plus;1})&space;\\&=&space;\sum_{i=1}^{n}d_i(1&plus;\delta_i)(1&plus;\delta_{n&plus;1})&space;=&space;\sum_{i=1}^{n}d_i(1&plus;\eta_i),\end{align*}&space;" title="\begin{align*}\sigma_{1:n} &= \mathrm{fl}\!\left( \mathrm{fl}(d_1) + \mathrm{fl}(d_2) + \cdots + \mathrm{fl}(d_n) \right) \\&= \mathrm{fl}\!\left(d_1(1+\delta_1) + d_2(1+\delta_2) + \cdots + d_n(1+\delta_n) \right) \\&= \left( d_1(1+\delta_1) + d_2(1+\delta_2) + \cdots + d_n(1+\delta_n) \right)(1+\delta_{n+1}) \\&= \sum_{i=1}^{n}d_i(1+\delta_i)(1+\delta_{n+1}) = \sum_{i=1}^{n}d_i(1+\eta_i),\end{align*} " />
