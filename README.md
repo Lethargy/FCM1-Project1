@@ -207,7 +207,7 @@ Gallivan, K. A. _Set 2: Representation, Conditioning and Error_, Lecture Notes. 
 Gallivan, K. A. _Set 3: Finite Precision Arithmetic and Numerical Stability_, Lecture Notes. Foundations of Computational Math I, Florida State University.
 
 <a id="3">[3]</a>
-Gallivan, K. A. _Set 4: Numerical Stability Examples_, Lecture Notes. Foundations of Computational Math 1, Florida State University.
+Gallivan, K. A. _Set 4: Numerical Stability Examples_, Lecture Notes. Foundations of Computational Math I, Florida State University.
 
 <a id="4">[4]</a>
 J. D. Hunter, "Matplotlib: A 2D Graphics Environment", Computing in Science & Engineering, vol. 9, no. 3, pp. 90-95, 2007.
