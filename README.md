@@ -96,7 +96,7 @@ does not change the order of
 
 To show that
 <img src="https://latex.codecogs.com/svg.image?\bg_white&space;\inline&space;\hat{x}_1({\bf{d}})" title="\bg_white \inline \hat{x}_1({\bf{d}})" />
-is backwards stable, recall [[4]](#4) that we may express
+is backwards stable, recall [[3]](#3) that we may express
 <img src="https://latex.codecogs.com/svg.image?\bg_white&space;\inline&space;\hat{x}_1({\bf{d}})" title="\bg_white \inline \hat{x}_1({\bf{d}})" />
 in the form
 
@@ -127,6 +127,77 @@ which is small relative to
 because each
 <img src="https://latex.codecogs.com/svg.image?\bg_white&space;\inline&space;\eta_i" title="\bg_white \inline \eta_i" />
 is small.
+
+## Algorithm 2
+Assume that
+<img src="https://latex.codecogs.com/svg.image?\inline&space;n&space;=&space;2^k" title="\inline n = 2^k" />
+for some
+<img src="https://latex.codecogs.com/svg.image?\inline&space;k&space;\in&space;\mathbb{N}" title="\inline k \in \mathbb{N}" />.
+If this is not the case, then take
+<img src="https://latex.codecogs.com/svg.image?\inline&space;\tilde{n}&space;=&space;2^{\lceil{\log_2&space;n}\rceil}" title="\inline \tilde{n} = 2^{\lceil{\log_2 n}\rceil}" />
+and let
+<img src="https://latex.codecogs.com/svg.image?\inline&space;d_{n&plus;1}&space;=&space;\cdots&space;=&space;d_{\tilde{n}}&space;=&space;0" title="\inline d_{n+1} = \cdots = d_{\tilde{n}} = 0" />.
+For floating point
+<img src="https://latex.codecogs.com/svg.image?\inline&space;\xi" title="\inline \xi" />,
+we claim that
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.image?\begin{align*}\left|\hat{x}_2(\xi)&space;-&space;x(\xi)&space;\right|&space;&\leq&space;\kappa_a&space;\left&space;(&space;\log_2&space;n&space;\right&space;)&space;u&space;\\\left|&space;\frac{\hat{x}_2(\xi)&space;-&space;x(\xi)}{x(\xi)}&space;\right|&space;&\leq&space;\kappa_r&space;\left&space;(&space;\log_2&space;n&space;\right&space;)&space;u.\end{align*}" title="\begin{align*}\left|\hat{x}_2(\xi) - x(\xi) \right| &\leq \kappa_a \left ( \log_2 n \right ) u \\\left| \frac{\hat{x}_2(\xi) - x(\xi)}{x(\xi)} \right| &\leq \kappa_r \left ( \log_2 n \right ) u.\end{align*}" />
+</p>
+  
+That is, 
+<img src="https://latex.codecogs.com/svg.image?\inline&space;p(n)&space;\in&space;\mathcal{O}\!\left(&space;\log_2&space;n&space;\right)" title="\inline p(n) \in \mathcal{O}\!\left( \log_2 n \right)" />
+for the binary fan-in tree. For proof, see 1.3.c in the written homework solutions. As was the case before, real valued data does not change the order of
+<img src="https://latex.codecogs.com/svg.image?\inline&space;p(n)" title="\inline p(n)" />
+; we may take
+<img src="https://latex.codecogs.com/svg.image?\inline&space;p(n)&space;=&space;1&space;&plus;&space;\log_2&space;n" title="\inline p(n) = 1 + \log_2 n" />
+if we wish to be conservative.
+
+Just like algorithm 1,
+<img src="https://latex.codecogs.com/svg.image?\inline&space;\hat{x}_2({\bf{d}})" title="\inline \hat{x}_2({\bf{d}})" />
+solves the problem with data
+<img src="https://latex.codecogs.com/svg.image?\inline&space;\left(&space;d_1&space;(1&plus;\eta_1),\dots,d_n(1&plus;\eta_n)&space;\right)^T" title="\inline \left( d_1 (1+\eta_1),\dots,d_n(1+\eta_n) \right)^T" />
+. We attain a similar expression for the backwards error (see homework problem 1.3.b.), with the
+<img src="https://latex.codecogs.com/svg.image?\inline&space;\eta_i" title="\inline \eta_i" />
+being different, but still small (
+<img src="https://latex.codecogs.com/svg.image?\inline&space;\left|&space;\eta_1&space;\right|&space;\leq&space;\left(&space;1&space;&plus;&space;\log_2&space;n&space;\right)&space;u" title="\inline \left| \eta_1 \right| \leq \left( 1 + \log_2 n \right) u" />
+).
+
+## Algorithm 3
+Unit round off for double precision floats
+<img src="https://latex.codecogs.com/svg.image?\inline&space;u_{dp}&space;=&space;2^{-53}" title="\inline u_{dp} = 2^{-53}" />
+is
+<img src="https://latex.codecogs.com/svg.image?\inline&space;2^{29}" title="\inline 2^{29}" />
+times smaller than that of single precision
+<img src="https://latex.codecogs.com/svg.image?\inline&space;u_{sp}&space;=&space;2^{-24}" title="\inline u_{sp} = 2^{-24}" />
+. We therefore neglect the accumulation of rounding error due to double precision addition. This may be problematic when
+<img src="https://latex.codecogs.com/svg.image?\inline&space;n&space;\gg&space;2^{29}" title="\inline n \gg 2^{29}" />
+, but we do not consider such sums here here. The algorithm in question is
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.image?\begin{align*}\sigma_{1:n}&space;&=&space;\mathrm{fl}\!\left(&space;\mathrm{fl}(d_1)&space;&plus;&space;\mathrm{fl}(d_2)&space;&plus;&space;\cdots&space;&plus;&space;\mathrm{fl}(d_n)&space;\right)&space;\\&=&space;\mathrm{fl}\!\left(d_1(1&plus;\delta_1)&space;&plus;&space;d_2(1&plus;\delta_2)&space;&plus;&space;\cdots&space;&plus;&space;d_n(1&plus;\delta_n)&space;\right)&space;\\&=&space;\left(&space;d_1(1&plus;\delta_1)&space;&plus;&space;d_2(1&plus;\delta_2)&space;&plus;&space;\cdots&space;&plus;&space;d_n(1&plus;\delta_n)&space;\right)(1&plus;\delta_{n&plus;1})&space;\\&=&space;\sum_{i=1}^{n}d_i(1&plus;\delta_i)(1&plus;\delta_{n&plus;1})&space;=&space;\sum_{i=1}^{n}d_i(1&plus;\eta_i),\end{align*}&space;" title="\begin{align*}\sigma_{1:n} &= \mathrm{fl}\!\left( \mathrm{fl}(d_1) + \mathrm{fl}(d_2) + \cdots + \mathrm{fl}(d_n) \right) \\&= \mathrm{fl}\!\left(d_1(1+\delta_1) + d_2(1+\delta_2) + \cdots + d_n(1+\delta_n) \right) \\&= \left( d_1(1+\delta_1) + d_2(1+\delta_2) + \cdots + d_n(1+\delta_n) \right)(1+\delta_{n+1}) \\&= \sum_{i=1}^{n}d_i(1+\delta_i)(1+\delta_{n+1}) = \sum_{i=1}^{n}d_i(1+\eta_i),\end{align*} " />
+</p>
+
+where
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.image?1&space;&plus;&space;\eta_i&space;=&space;(1&plus;\delta_i)(1&plus;\delta_{n&plus;1})&space;\implies&space;\left|&space;\eta_i&space;\right|&space;\leq&space;2u." title="1 + \eta_i = (1+\delta_i)(1+\delta_{n+1}) \implies \left| \eta_i \right| \leq 2u." />
+</p>
+
+It follows that
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.image?\begin{align*}\left|\hat{x}_2&space;-&space;x&space;\right|&space;&\leq&space;\sum_{i=1}^n&space;\left|&space;d_i\right|&space;2u&space;=&space;2\kappa_a&space;u&space;\\\left|&space;\frac{\hat{x}_2&space;-&space;x}{x}&space;\right|&space;&\leq&space;\frac{\sum_{i=1}^n&space;\left|&space;d_i\right|}{\left|&space;\sum_{i=1}^n&space;d_i&space;\right|}2u&space;=&space;2\kappa_r&space;u.\end{align*}" title="\begin{align*}\left|\hat{x}_2 - x \right| &\leq \sum_{i=1}^n \left| d_i\right| 2u = 2\kappa_a u \\\left| \frac{\hat{x}_2 - x}{x} \right| &\leq \frac{\sum_{i=1}^n \left| d_i\right|}{\left| \sum_{i=1}^n d_i \right|}2u = 2\kappa_r u.\end{align*}" />
+</p>
+  
+In particular,
+<img src="https://latex.codecogs.com/svg.image?\inline&space;p(n)&space;\in&space;\mathcal{O}(1)" title="\inline p(n) \in \mathcal{O}(1)" />
+. As before,
+<img src="https://latex.codecogs.com/svg.image?\inline&space;\hat{x}_3({\bf{d}})" title="\inline \hat{x}_3({\bf{d}})" />
+solves the problem with data
+<img src="https://latex.codecogs.com/svg.image?\inline&space;{\bf{d}}&space;=&space;\left(&space;d_1(1&plus;\eta_1),\dots,&space;d_n(1&plus;\eta_n)&space;\right)^T" title="\inline {\bf{d}} = \left( d_1(1+\eta_1),\dots, d_n(1+\eta_n) \right)^T" />
+, and the backward error is small:
+<img src="https://latex.codecogs.com/svg.image?\inline&space;\left|&space;\eta_i&space;\right|&space;\leq&space;2u" title="\inline \left| \eta_i \right| \leq 2u" />.
 
 # References
 <a id="1">[1]</a>
